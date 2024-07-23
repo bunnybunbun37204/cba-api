@@ -17,7 +17,7 @@ line.doc("/", {
 // Define the sendMessage route
 const sendMessageRoute = createRoute({
   method: "post",
-  path: "/line/sendMessage",
+  path: "/sendMessage",
   request: {
     body: {
       content: {
