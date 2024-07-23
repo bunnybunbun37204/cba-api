@@ -30,7 +30,7 @@ file.doc("/", {
 // Define the file upload route with example data
 const fileUploadRoute = createRoute({
   method: "put",
-  path: "/upload",
+  path: "/file/upload",
   request: {
     body: {
       content: {
@@ -118,7 +118,7 @@ file.openapi(fileUploadRoute, async (c) => {
 // Define the image retrieval route with example data
 const imageRetrievalRoute = createRoute({
   method: "get",
-  path: "/images/{key}",
+  path: "/file/images/{key}",
   request: {
     params: z.object({
       key: z.string().describe("The unique key of the image in the bucket."),
