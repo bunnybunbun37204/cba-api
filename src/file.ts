@@ -31,6 +31,7 @@ file.doc("/", {
 const fileUploadRoute = createRoute({
   method: "put",
   path: "/upload",
+  tags: ["File"],
   request: {
     body: {
       content: {
@@ -119,6 +120,7 @@ file.openapi(fileUploadRoute, async (c) => {
 const imageRetrievalRoute = createRoute({
   method: "get",
   path: "/images/{key}",
+  tags: ["File"],
   request: {
     params: z.object({
       key: z.string().describe("The unique key of the image in the bucket."),
@@ -173,7 +175,5 @@ file.openapi(imageRetrievalRoute, async (c) => {
   });
 });
 
-// Serve Swagger UI
-file.get("/docs", swaggerUI({ url: "/file" }));
 
 export default file;

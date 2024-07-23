@@ -1,23 +1,13 @@
-import { swaggerUI } from "@hono/swagger-ui";
 import { createRoute, OpenAPIHono, z } from "@hono/zod-openapi";
 import { env } from "hono/adapter";
 
 const line = new OpenAPIHono();
 
-// Define the OpenAPI documentation
-line.doc("/", {
-  openapi: "3.0.0",
-  info: {
-    version: "1.0.0",
-    title: "Line API",
-    description: "API for sending messages via Line Notify.",
-  },
-});
-
 // Define the sendMessage route
 const sendMessageRoute = createRoute({
   method: "post",
   path: "/sendMessage",
+  tags: ["Line"],
   request: {
     body: {
       content: {
@@ -63,8 +53,5 @@ line.openapi(sendMessageRoute, async (c) => {
 
   return c.text("OK");
 });
-
-// Serve Swagger UI
-line.get("/docs", swaggerUI({ url: "/line" }));
 
 export default line;
