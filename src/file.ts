@@ -17,16 +17,6 @@ type Data = {
 const maxAge = 60 * 60 * 24 * 90;
 const file = new OpenAPIHono<{ Bindings: Bindings }>();
 
-// Define the OpenAPI documentation
-file.doc("/", {
-  openapi: "3.0.0",
-  info: {
-    version: "1.0.0",
-    title: "File upload and get API",
-    description: "API for uploading base64 encoded files.",
-  },
-});
-
 // Define the file upload route with example data
 const fileUploadRoute = createRoute({
   method: "put",
