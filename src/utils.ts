@@ -20,7 +20,7 @@ export const detectType = (b64: string): Type | undefined => {
 };
 
 // Rate Limiter Configuration
-const RATE_LIMIT = 500; // Max requests per minute
+const RATE_LIMIT = 1000; // Max requests per minute
 const RATE_LIMIT_WINDOW = 60 * 1000; // 1 minute in milliseconds
 
 // In-memory store for rate limiting
