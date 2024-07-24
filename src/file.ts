@@ -119,7 +119,7 @@ file.openapi(fileUploadRoute, async (c) => {
 // Define the image retrieval route with example data
 const imageRetrievalRoute = createRoute({
   method: "get",
-  path: "/images/{key}",
+  path: "/views/{key}",
   tags: ["File"],
   request: {
     params: z.object({
