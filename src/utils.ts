@@ -9,6 +9,17 @@ const signatures: Record<string, Type> = {
   iVBORw0KGgo: { mimeType: "image/png", suffix: "png" },
   "/9j/": { mimeType: "image/jpg", suffix: "jpg" },
   "UklGRg==": { mimeType: "image/webp", suffix: "webp" },
+  JVBERi0xLjQK: { mimeType: "application/pdf", suffix: "pdf" },
+  AAABAAEAEBAAA: { mimeType: "audio/wav", suffix: "wav" },
+  TVqQAAMAAAAEAAAA: { mimeType: "video/mp4", suffix: "mp4" },
+  fZCjDZO7M4Z4gI0: { mimeType: "application/zip", suffix: "zip" },
+  UEsDBBQAAAA: {
+    mimeType:
+      "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+    suffix: "docx",
+  },
+  SUQzBAAAAAAA: { mimeType: "audio/mpeg", suffix: "mp3" }, // MP3
+  VGV4dCBmaWxl: { mimeType: "text/plain", suffix: "txt" }, // Text
 };
 
 export const detectType = (b64: string): Type | undefined => {
