@@ -46,7 +46,7 @@ app.doc("/doc", {
   info: {
     version: "rolling",
     title: "CBA chula API",
-    description: "This is API for IS department at CBA chula",
+    description: "This API requires authentication for all endpoints. Include an `Authorization` header with your requests to access the endpoints. All endpoints in this API require Basic Authentication.",
     license: {
       name: "License",
       url: "https://github.com/bunnybunbun37204/cba-api/blob/main/LICENSE.md",
