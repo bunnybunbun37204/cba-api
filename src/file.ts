@@ -1,4 +1,3 @@
-import { swaggerUI } from "@hono/swagger-ui";
 import { createRoute, OpenAPIHono, z } from "@hono/zod-openapi";
 import { sha256 } from "hono/utils/crypto";
 import { detectType } from "./utils";
@@ -174,6 +173,5 @@ file.openapi(imageRetrievalRoute, async (c) => {
     "Content-Type": contentType,
   });
 });
-
 
 export default file;
