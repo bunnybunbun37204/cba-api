@@ -1,6 +1,7 @@
 import { createRoute, OpenAPIHono, z } from "@hono/zod-openapi";
 import { sha256 } from "hono/utils/crypto";
 import { detectType } from "./utils";
+import { cache } from "hono/cache";
 
 type Bindings = {
   DB: D1Database;
@@ -157,6 +158,14 @@ const imageRetrievalRoute = createRoute({
     },
   },
 });
+
+// Define a route to handle GET requests for files
+file.get(
+  "*", // Wildcard route to match all paths under /file
+  cache({
+    cacheName: "r2-image-worker", // Cache configuration for storing and retrieving files
+  })
+);
 
 // Implement the image retrieval functionality
 file.openapi(imageRetrievalRoute, async (c) => {
