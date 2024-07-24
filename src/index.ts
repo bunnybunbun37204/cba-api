@@ -7,17 +7,19 @@ import line from "./line";
 import file from "./file";
 import auth64 from "./auth";
 import { env } from "hono/adapter";
+import { rateLimiter } from "./utils";
 
+// Type definitions for bindings
 type Bindings = {
   MY_BUCKET: R2Bucket;
 };
 
+// Initialize the OpenAPIHono app
 const app = new OpenAPIHono<{ Bindings: Bindings }>();
 
-// CORS Middleware
+// Apply middleware
+app.use(rateLimiter);
 app.use("/*", cors());
-
-// Logger Middleware
 app.use(logger());
 
 // Basic Authentication Middleware
@@ -42,7 +44,7 @@ app.route("/auth", auth64);
 app.doc("/doc", {
   openapi: "3.0.0",
   info: {
-    version: "1.1.0",
+    version: "1.1.2",
     title: "CBA chula API",
     description: "This is API for IS department at CBA chula",
     license: {

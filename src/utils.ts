@@ -18,3 +18,36 @@ export const detectType = (b64: string): Type | undefined => {
     }
   }
 };
+
+// Rate Limiter Configuration
+const RATE_LIMIT = 500; // Max requests per minute
+const RATE_LIMIT_WINDOW = 60 * 1000; // 1 minute in milliseconds
+
+// In-memory store for rate limiting
+const requestCounts: Record<string, { count: number; timestamp: number }> = {};
+
+// Rate Limiting Middleware
+export const rateLimiter = async (c: any, next: () => Promise<any>) => {
+  const ip = c.req.ip; // or use c.req.headers.get('X-Forwarded-For') if available
+
+  const now = Date.now();
+  const windowStart = now - RATE_LIMIT_WINDOW;
+
+  if (!requestCounts[ip]) {
+    requestCounts[ip] = { count: 1, timestamp: now };
+  } else {
+    if (requestCounts[ip].timestamp < windowStart) {
+      // Reset count and timestamp if window has passed
+      requestCounts[ip] = { count: 1, timestamp: now };
+    } else {
+      // Increment request count
+      requestCounts[ip].count += 1;
+    }
+  }
+
+  if (requestCounts[ip].count > RATE_LIMIT) {
+    return c.json({ message: "Rate limit exceeded" }, 429);
+  }
+
+  return next();
+};
