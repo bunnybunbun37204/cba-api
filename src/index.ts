@@ -35,7 +35,7 @@ const auth = basicAuth({
 
 // Define routes with authentication
 app.use("/line/*", auth);
-app.use("/file/*", auth);
+app.use("/file/upload", auth);
 app.route("/line", line);
 app.route("/file", file);
 app.route("/auth", auth64);
