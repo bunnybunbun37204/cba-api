@@ -46,7 +46,7 @@ app.doc("/doc", {
   info: {
     version: "rolling",
     title: "CBA chula API",
-   description: "This is API for IS department at CBA chula ",
+    description: "This is API for IS department at CBA chula",
     license: {
       name: "License",
       url: "https://github.com/bunnybunbun37204/cba-api/blob/main/LICENSE.md",
