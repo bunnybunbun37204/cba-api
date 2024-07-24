@@ -17,7 +17,7 @@ type Bindings = {
 // Initialize the OpenAPIHono app
 const app = new OpenAPIHono<{ Bindings: Bindings }>();
 
-// Apply middleware
+// Middleware
 app.use(rateLimiter);
 app.use("/*", cors());
 app.use(logger());
@@ -33,9 +33,11 @@ const auth = basicAuth({
   },
 });
 
-// Define routes with authentication
+// Routes with authentication
 app.use("/line/*", auth);
 app.use("/file/upload", auth);
+
+// Route definitions
 app.route("/line", line);
 app.route("/file", file);
 app.route("/auth", auth64);
@@ -46,7 +48,8 @@ app.doc("/doc", {
   info: {
     version: "rolling",
     title: "CBA chula API",
-    description: "This API requires authentication for all endpoints. Include an `Authorization` header with your requests to access the endpoints. All endpoints in this API require Basic Authentication.",
+    description:
+      "This API requires authentication for all endpoints. Include an `Authorization` header with your requests to access the endpoints. All endpoints in this API require Basic Authentication.",
     license: {
       name: "License",
       url: "https://github.com/bunnybunbun37204/cba-api/blob/main/LICENSE.md",

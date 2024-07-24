@@ -10,6 +10,8 @@ const signatures: Record<string, Type> = {
   "/9j/": { mimeType: "image/jpg", suffix: "jpg" },
   "UklGRg==": { mimeType: "image/webp", suffix: "webp" },
   JVBERi0xLjQK: { mimeType: "application/pdf", suffix: "pdf" },
+  JVBERi0xL: { mimeType: "application/pdf", suffix: "pdf" },
+  JVBERi0: { mimeType: "application/pdf", suffix: "pdf" },
   AAABAAEAEBAAA: { mimeType: "audio/wav", suffix: "wav" },
   TVqQAAMAAAAEAAAA: { mimeType: "video/mp4", suffix: "mp4" },
   fZCjDZO7M4Z4gI0: { mimeType: "application/zip", suffix: "zip" },
