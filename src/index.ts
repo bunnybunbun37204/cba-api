@@ -44,7 +44,7 @@ app.route("/auth", auth64);
 
 // OpenAPI Documentation
 app.doc("/doc", {
-  openapi: "3.0.0",
+  openapi: "3.1.0",
   info: {
     version: "rolling",
     title: "CBA chula API",

@@ -19,7 +19,7 @@ const file = new OpenAPIHono<{ Bindings: Bindings }>();
 
 // Define the file upload route with example data
 const fileUploadRoute = createRoute({
-  method: "put",
+  method: "post",
   path: "/upload",
   tags: ["File"],
   request: {
